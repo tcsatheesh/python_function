@@ -7,4 +7,4 @@ Run in command line
 
     docker build --tag <docker id>/azurefunctionsimage:v1.0.0 .
 
-    docker run -p 8080:80 -it <docker id>/azurefunctionsimage:v1.0.0
+    docker run --env-file ./.env -p 8080:80 -it <docker id>/azurefunctionsimage:v1.0.0
