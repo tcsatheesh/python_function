@@ -11,7 +11,7 @@
     {
       "name": "outputblob",
       "type": "blob",
-      "path": "samples-workitems-output/{blobTrigger}-Copy",
+      "path": "samples-workitems-output/{blobTrigger}.json",
       "connection": "",
       "direction": "out"
     }
