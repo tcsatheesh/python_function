@@ -81,11 +81,13 @@ class FormsRecognizer:
         cognitive_svc_key = os.getenv("FORMS_RECOGNIZER_SERVICE_API_KEY")
         model_id = os.getenv("FORMS_RECOGNIZER_MODEL_ID")
         cognitive_svc = FormsRecognizer(cognitive_svc_endpoint,
-                                         cognitive_svc_key, model_id)
+                                        cognitive_svc_key, model_id)
         return cognitive_svc.call_form_recognizer_api(data_bytes=form_data)
 
 
-def main(inputblob: func.InputStream, outputblob: func.Out[func.InputStream]):
+def main(inputblob: func.InputStream,
+         outputblob: func.Out[func.InputStream],
+         csvoutputblob: func.Out[func.InputStream]):
     logging.info(f"Python blob trigger function processed blob \n"
                  f"Name: {inputblob.name}\n"
                  f"Blob Size: {inputblob.length} bytes\n")
@@ -93,3 +95,4 @@ def main(inputblob: func.InputStream, outputblob: func.Out[func.InputStream]):
     output_json = FormsRecognizer.call_forms_recognizer(
         form_data=inputblob.read())
     outputblob.set(json.dumps(output_json))
+    csvoutputblob.set(json.dumps(output_json))
