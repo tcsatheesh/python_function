@@ -80,7 +80,7 @@ class FormsRecognizer:
         cognitive_svc_endpoint = os.getenv("FORMS_RECOGNIZER_SERVICE_ENDPOINT")
         cognitive_svc_key = os.getenv("FORMS_RECOGNIZER_SERVICE_API_KEY")
         model_id = os.getenv("FORMS_RECOGNIZER_MODEL_ID")
-        cognitive_svc = CognitiveService(cognitive_svc_endpoint,
+        cognitive_svc = FormsRecognizer(cognitive_svc_endpoint,
                                          cognitive_svc_key, model_id)
         return cognitive_svc.call_form_recognizer_api(data_bytes=form_data)
 
